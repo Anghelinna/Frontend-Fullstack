@@ -8,5 +8,16 @@ export default defineConfig({
   plugins: [react(),tailwindcss()],
   preview: {
     allowedHosts: ['kuska.onrender.com']
-  }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    css: true,
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    coverage: {
+      reporter: ['text', 'lcov', 'clover'],
+      exclude: ['node_modules/', 'src/test/'],
+    },
+  },
 })
